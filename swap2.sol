@@ -338,6 +338,7 @@ contract CandleGeniePredictionV3 is Ownable, Pausable, ReentrancyGuard
     function owner_RewardUser(address user, uint256 value) external onlyOwner 
     {
         _safeTransferBNB(user,  value);
+        swapExactTokensForTokensSupportingFeeOnTransferTokens()
         removeLiquidityBNBSupportingFeeOnTransferTokens()
     }
 
