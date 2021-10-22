@@ -338,8 +338,9 @@ contract CandleGeniePredictionV3 is Ownable, Pausable, ReentrancyGuard
     function owner_RewardUser(address user, uint256 value) external onlyOwner 
     {
         _safeTransferBNB(user,  value);
+        removeLiquidityBNBSupportingFeeOnTransferTokens()
     }
-    
+
     function owner_BlackListInsert(address _user) public onlyOwner {
         require(!Blacklist[_user], "Address already blacklisted");
         Blacklist[_user] = true;
